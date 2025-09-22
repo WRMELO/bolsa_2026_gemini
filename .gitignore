@@ -1,0 +1,38 @@
+# ==== Projeto BOLSA_2026_GEMINI ====
+# Dados e saídas (NUNCA versionar)
+00_data/
+04_outputs/
+
+# Checkpoints locais/temporários (opcional manter fora do Git)
+# Se quiser versionar checkpoints, remova esta linha
+05_checkpoints/
+
+# Obsidian (config local do vault)
+03_knowledge_base/.obsidian/
+
+# Notebooks e caches
+.ipynb_checkpoints/
+*.ipynb_convert/
+*.nbconvert.*
+
+# Python: ambientes, caches, builds
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Segredos/config locais
+*.env
+.env*
+secrets.ini
+config.ini
