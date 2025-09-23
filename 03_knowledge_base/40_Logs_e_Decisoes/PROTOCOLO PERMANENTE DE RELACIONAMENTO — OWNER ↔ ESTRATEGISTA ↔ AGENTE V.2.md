@@ -117,7 +117,54 @@ Ao final de cada etapa registrar:
 - Cada papel interage **somente** dentro dos limites definidos.  
 
 ---
+### A. Regra Zero (obrigatória em toda resposta/célula)
 
+- A **primeira linha** de **toda** resposta do Estrategista e da **primeira célula** do Agente deve ser:  
+    `One-step discipline (HF-000) ON`.
+    
+- O Agente deve **ecoar** no topo do bloco: `ACK HEURISTICS: HF000=ON | GapFill=OFF | ContextCarry=OFF | Narrative=OFF | StructRetain=OFF | SpeedOpt=OFF`.
+    
+
+### B. SSOT e caminhos
+
+- O Estrategista **nunca** supõe arquivo/caminho. Se o insumo não estiver apontado no SSOT, ordenar ao Agente: **parar** e abrir **DÚVIDA_BLOQUEANTE**.
+    
+- Para Google Drive Compartilhado: o Agente **sempre** monta e usa o prefixo `/content/drive/Shareddrives/...`; é **proibido** “adivinhar” caminhos alternativos.
+    
+
+### C. Verbosidade e modo de execução
+
+- **VERBOSITY=QUIET** por padrão nos passos “RAM-only”: nenhum print/relatório, salvo ordem explícita.
+    
+- **VERBOSITY=REPORT** apenas quando o protocolo exigir logs mínimos do Manual.
+    
+
+### D. Anti-ambiguidade pandas (pre-flight mandatório)
+
+- Antes de executar, o Agente varre o próprio bloco e **substitui** padrões ambíguos (`if df:`, `if series:` etc.) por checagens escalares (`.empty`, `.any()`, `.all()`, `pd.notna()`).
+    
+- Se ainda disparar “truth value of a Series is ambiguous” → **parar no 1º evento** e emitir **DÚVIDA_BLOQUEANTE** com `linha_exata/contexto/intenção/proposta`.
+    
+
+### E. Bootstrap, fallback e robustez de rede
+
+- `pip install yfinance` no topo; 3 tentativas com backoff simples para downloads.
+    
+- Macros: **fallback obrigatório** `BZ=F → CL=F`; o Agente retorna a lista `macros_utilizadas`.
+    
+
+### F. Fronteiras de papel e forma de entrega
+
+- Estrategista **nunca** entrega código; apenas instruções claras, checklist e critérios de bloqueio.
+    
+- Agente **sempre** entrega **um bloco único** de código, sem narrativa fora do bloco, confirmando heurísticas no topo.
+    
+
+### G. Escalonamento e porta de saída
+
+- **Erro idêntico repetido 2x** → Agente **para** e abre **DÚVIDA_BLOQUEANTE**.
+    
+- **Ambiguidade de requisito** → Estrategista corrige a instrução e registra ajuste.
 # Conclusão
 Este documento unifica três dimensões:  
 - **Papéis** (quem faz o quê),  
@@ -125,3 +172,4 @@ Este documento unifica três dimensões:
 - **Governança** (como se garante perenidade).  
 
 Ele é válido para **todos os projetos**, sem exceção, e substitui quaisquer versões fragmentadas anteriores.  
+

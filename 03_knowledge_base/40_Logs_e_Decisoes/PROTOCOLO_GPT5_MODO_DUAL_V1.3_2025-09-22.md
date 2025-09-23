@@ -196,5 +196,33 @@ Sempre que for necessário reiniciar em novo chat, o checkpoint deve conter:
 
 ---
 
-**Fim do Protocolo GPT-5 – Versão 1.0**
+
+## Adendo ao **PROTOCOLO MODO DUAL** (aplicável imediatamente)
+
+1. **Mandamento Zero persistente**
+    
+    - Em **toda** resposta do Estrategista e **toda** primeira célula do Agente:  
+        `One-step discipline (HF-000) ON` **na primeira linha**.
+        
+    - O Estrategista deve **declarar no início** de cada resposta: `HF-000: ON | GapFill: OFF | ContextCarry: OFF | Narrative: OFF | StructRetain: OFF | SpeedOpt: OFF`.
+        
+2. **Handshake obrigatório do Agente**
+    
+    - Antes de qualquer execução, o Agente responde **no topo do bloco**:  
+        `ACK HEURISTICS: HF000=ON | GapFill=OFF | ContextCarry=OFF | Narrative=OFF | StructRetain=OFF | SpeedOpt=OFF | Mode=Instant | ExecProfile={RAM_ONLY|PERSIST}`.
+        
+3. **Modos e escalada**
+    
+    - Permanecer em **Instant** por padrão; escalar a **Thinking** apenas quando houver necessidade objetiva de raciocínio estruturado (multi-fontes/níveis). Ao escalar, o Estrategista **declara** a troca.
+        
+4. **Bloqueios mandatórios**
+    
+    - **Falta de SSOT/caminhos** → DÚVIDA_BLOQUEANTE imediata.
+        
+    - **Ambiguidade pandas** (detectada ou em runtime) → DÚVIDA_BLOQUEANTE com `linha_exata/contexto/intenção/proposta`.
+        
+5. **Conformidade final**
+    
+    - O Agente encerra o bloco **sem prints** em `VERBOSITY=QUIET` e retorna apenas os objetos solicitados; logs só com `VERBOSITY=REPORT`.
+
 

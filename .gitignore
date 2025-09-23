@@ -8,7 +8,6 @@
 05_checkpoints/
 
 # Obsidian (config local do vault)
-03_knowledge_base/.obsidian/
 .obsidian/
 
 # Notebooks e caches
