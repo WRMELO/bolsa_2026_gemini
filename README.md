@@ -84,7 +84,40 @@ Por padrão, **não são versionados**:
 
 Observação: `05_checkpoints/` está ignorado por padrão. Remova essa entrada do `.gitignore` caso deseje versionar checkpoints.
 
-## Utilitários de Caminho
+## Utilitários
+
+### Montagem do Google Drive
+
+- Utilitário: `02_src/utils_drive.py`
+    
+    - `is_colab()` detecta se o código está rodando no Google Colab.
+        
+    - `mount_drive(mount_point='/content/drive')` monta o Google Drive no Colab ou configura ambiente local.
+        
+    - `get_project_root()` retorna o caminho raiz do projeto (Colab ou local).
+        
+    - `setup_environment()` configura o ambiente completo: monta drive, resolve caminhos e adiciona ao PYTHONPATH.
+        
+
+Este utilitário permite que os notebooks funcionem tanto no **Google Colab** quanto **localmente** sem modificações.
+
+Exemplo de uso:
+
+```python
+from importlib.util import spec_from_file_location, module_from_spec
+import os
+
+# Localizar e importar o utilitário
+utils_drive_path = os.path.join(os.getcwd(), '02_src', 'utils_drive.py')
+spec = spec_from_file_location('utils_drive', utils_drive_path)
+utils_drive = module_from_spec(spec)
+spec.loader.exec_module(utils_drive)
+
+# Configurar ambiente (funciona no Colab e localmente)
+drive_path, project_root = utils_drive.setup_environment()
+```
+
+### Caminhos do Projeto
 
 - Configuração canônica: `02_src/config_paths.yaml`
     
@@ -101,7 +134,7 @@ Observação: `05_checkpoints/` está ignorado por padrão. Remova essa entrada 
     - `ensure_dirs(*keys)` cria de forma idempotente os diretórios base desejados.
         
 
-Exemplo de uso (documentação):
+Exemplo de uso:
 
 ```python
 from importlib.util import spec_from_file_location, module_from_spec
