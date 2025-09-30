@@ -226,3 +226,6 @@ Sempre que for necessário reiniciar em novo chat, o checkpoint deve conter:
     - O Agente encerra o bloco **sem prints** em `VERBOSITY=QUIET` e retorna apenas os objetos solicitados; logs só com `VERBOSITY=REPORT`.
 
 
+# MAIS UM ADENDO
+
+*ContextCarry=OFF (travado), SÓ UTILIZAR NOMES E CAMINHOS QUE VENHAM DO ANEXO A OU DE CHECKPOINTS DO PROJETO
