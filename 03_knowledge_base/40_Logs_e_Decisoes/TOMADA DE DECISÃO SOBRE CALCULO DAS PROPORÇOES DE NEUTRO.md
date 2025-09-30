@@ -1,4 +1,6 @@
 
+# Tomada de Decisão sobre Cálculo das Proporções de Neutro
+
 A lógica de tomada de decisão deste projeto combina duas camadas complementares: uma camada estatística, que observa todo o universo de ativos de forma conjunta, e uma camada operacional, que aplica regras de compra e venda em cada ativo de forma individual.
 
 O universo considerado é composto por 24 ativos. Dentro desse conjunto, entre 10 e 12 ativos são efetivamente mantidos na carteira, enquanto outros 12 a 14 permanecem em reserva, monitorados para uma possível entrada. Além disso, alguns ativos podem ser temporariamente colocados em quarentena, caso apresentem riscos específicos ou eventos excepcionais.
