@@ -1,4 +1,1 @@
-# Objetivo
-
-
-
+![[analises/graficos/fechamentos_prancha_1.html]]
